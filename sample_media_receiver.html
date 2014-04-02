@@ -97,6 +97,7 @@ limitations under the License.
 
         window.onload = function() {
             window.mediaElement = document.getElementById('receiverVideoElement');
+            // NOTE(cartland): Saw bug where developer set to false.
             window.mediaElement.autoplay = true;
 
             /**
@@ -329,8 +330,16 @@ limitations under the License.
             }
 
 
+            // NOTE(cartland): When are the MediaManager methods called?
+            // SEEK, PAUSE, PLAY are called. Not volume.
+
             // This class is used to send/receive media messages/events using the media protocol/namesapce (urn:x-cast:com.google.cast.media).
             window.mediaManager = new cast.receiver.MediaManager(window.mediaElement);
+
+            // NOTE(cartland): The MediaManager contains callback methods that must be
+            // called in order to do its job correctly. In order to add additional
+            // functionality, we can override the callback function, but we must
+            // remember to call the original function.
 
             /**
              * Called when the media ends.
