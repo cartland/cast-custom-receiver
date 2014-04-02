@@ -277,7 +277,7 @@ limitations under the License.
                     window.timeout = null;
                 } else {
                     window.mediaElement.pause(); // Pause playback
-                    window.timeout = window.setTimeout(function(){window.close();}, 10000); // 10 Minute timeout
+                    window.timeout = window.setTimeout(function(){window.close();}, 600000); // 10 Minute timeout
                 }
             }
 
@@ -291,7 +291,7 @@ limitations under the License.
             document.addEventListener('webkitvisibilitychange', function(){
                 if(document.webkithidden) {
                     window.mediaElement.pause(); // Pause playback
-                    window.timeout = window.setTimeout(function(){window.close();}, 10000); // 10 Minute timeout
+                    window.timeout = window.setTimeout(function(){window.close();}, 600000); // 10 Minute timeout
                 } else {
                     window.mediaElement.play(); // Resume media playback
                     window.clearTimeout(window.timeout); // Turn off the timeout
@@ -628,7 +628,7 @@ limitations under the License.
              * come into play. Default value is 10 seconds.
              * @type {number|undefined}
              **/
-            appConfig.maxInactivity = 6000; // 10 minutes for testing, use default 10sec in prod by not setting this value
+            appConfig.maxInactivity = 600; // 10 minutes for testing, use default 10sec in prod by not setting this value
 
             /**
              * Initializes the system manager. The application should call this method when
